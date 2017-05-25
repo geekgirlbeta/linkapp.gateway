@@ -1,0 +1,2 @@
+include linkapp/gateway/templates/*
+include linkapp/gateway/static/*

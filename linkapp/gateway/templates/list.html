@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>List</title>
+<link rel="stylesheet" type="text/css" href="{{prefix}}static/style.css" />
+</head>
+
+<body>
+<div class="menu">
+<ul>
+    <li><a href="{{prefix}}new">Add New</a></li>
+    <li><a href="{{prefix}}reading-list">My Reading List</a></li>
+    <li><a href="{{prefix}}">Home</a></li>
+</ul>
+</div>
+{{#tag}}
+<h1>Latest Posts Filed Under: <em>{{tag}}</em></h1>
+{{/tag}}
+{{^tag}}
+<h1>Latest Posts</h1>
+{{/tag}}
+
+
+<div class="links">
+{{#links}}
+<div class="entry">
+    <h1><a href="{{url_address}}" target="_blank">{{page_title}}</a></h1>
+    <p><div class="desc">{{desc_text}}</div></p>
+    <p>
+        <span class="tags">
+            {{#tags}}
+                <a href="{{prefix}}tag/{{name}}">{{name}}</a>
+            {{/tags}}
+        </span>
+        <span class="author">{{author}} {{created}}</span>
+    </p>
+    <div>
+        <ul class="buttons">
+            <li class="edit"><a href="{{prefix}}edit/{{key}}">edit</a></li>
+            <li class="view"><a href="{{prefix}}view/{{key}}">view</a></li>
+            {{#user}}
+            <li class="view"><a href="{{prefix}}reading-list/add/{{key}}">add to reading list</a></li>
+            {{/user}}
+        </ul>
+    </div>
+    <!-- <div class="buttons">
+        <div class="edit"><a href="{{prefix}}edit/{{key}}">edit</a></div>
+        <div class="view"><a href="{{prefix}}view/{{key}}">view</a></div>
+    </div> -->
+</div>
+{{/links}}
+</div>
+
+<div class="page-count">
+    {{last}} pages, {{count}} items.
+</div>
+
+{{#tag}}
+<ul class="page-nav">
+    {{#previous}}
+    <li class="previous"><a href="{{prefix}}tag/{{tag}}/page/{{previous}}">&larr; Previous</a></li>
+    {{/previous}}
+    {{#next}}
+    <li class="next"><a href="{{prefix}}tag/{{tag}}/page/{{next}}">Next &rarr;</a></li>
+    {{/next}}
+</ul>
+{{/tag}}
+{{^tag}}
+<ul class="page-nav">
+    {{#previous}}
+    <li class="previous"><a href="{{prefix}}page/{{previous}}">&larr; Previous</a></li>
+    {{/previous}}
+    {{#next}}
+    <li class="next"><a href="{{prefix}}page/{{next}}">Next &rarr;</a></li>
+    {{/next}}
+</ul>
+{{/tag}}
+</body>
+
+</html>
